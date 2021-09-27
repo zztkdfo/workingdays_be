@@ -5,10 +5,12 @@ import com.ncits.workingdays.domain.Vo.TeamVo;
 import com.ncits.workingdays.service.TeamService;
 import com.ncits.workingdays.utils.XJsonUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
@@ -23,20 +25,23 @@ public class TeamController {
     @Autowired
     private TeamService teamService;
 
-    @RequestMapping(value = "/findTeamList")
+    @ApiOperation("Team 리스트")
+    @RequestMapping(value = "/findTeamList", method = RequestMethod.POST)
     @ResponseBody
     public List<Team> findMemberList() {
         List<Team> list = teamService.findTeamList();
         return list;
     }
 
-    @RequestMapping(value = "/getTeam")
+    @ApiOperation("Team 상세 정보")
+    @RequestMapping(value = "/getTeam", method = RequestMethod.POST)
     @ResponseBody
     public Team getMember(@RequestBody Long id) {
         return teamService.getTeam(id);
     }
 
-    @RequestMapping(value = "/getTeamVo")
+    @ApiOperation("Team 상세 정보 vo")
+    @RequestMapping(value = "/getTeamVo", method = RequestMethod.POST)
     @ResponseBody
     public TeamVo getMemberV0(@RequestBody Long id) throws IOException {
         Team team = teamService.getTeam(id);
