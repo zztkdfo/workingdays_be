@@ -3,6 +3,7 @@ package com.ncits.workingdays.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.vavr.control.Option;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -24,6 +25,7 @@ import java.util.Optional;
 @Setter(AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @MappedSuperclass
+@SuperBuilder(setterPrefix = "with", toBuilder = true)
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AuditableEntity<ID extends Serializable> implements Auditable<String, ID, Instant> {
     @Column(name = "CREATED_BY", updatable = false)
