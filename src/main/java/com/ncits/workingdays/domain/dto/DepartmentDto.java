@@ -31,7 +31,17 @@ public class DepartmentDto implements Serializable {
     private EmployeeDto departmentAdmin;
 
     /**
+     * 부서 관리자 ID
+     */
+    private Long departmentAdminId;
+
+    /**
      * 상위 부서
      */
     private DepartmentDto upperDepartment;
+
+    /**
+     * 상위 부서 ID
+     */
+    private Long upperDepartmentId;
 }
