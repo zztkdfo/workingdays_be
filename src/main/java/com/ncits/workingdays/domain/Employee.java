@@ -1,12 +1,8 @@
 package com.ncits.workingdays.domain;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,7 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Audited
 @Entity
-@SuperBuilder(setterPrefix = "with", toBuilder = true)
+@Builder
 @Table(name = "TB_EMPLOYEE")
 public class Employee extends AuditableEntity<Long> implements Serializable {
 

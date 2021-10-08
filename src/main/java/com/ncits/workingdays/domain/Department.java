@@ -1,10 +1,7 @@
 package com.ncits.workingdays.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
 
@@ -19,7 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Audited
 @Entity
-@SuperBuilder(setterPrefix = "with", toBuilder = true)
+@Builder
 @Table(name = "TB_DEPARTMENT")
 public class Department extends AuditableEntity<Long> implements Serializable {
 
