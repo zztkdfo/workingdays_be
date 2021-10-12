@@ -38,7 +38,7 @@ public class DepartmentService {
       * @throws IOException
       */
     public DepartmentDto getDepartmentDto(Long departmentId) throws IOException {
-        return XJsonUtils.convertToVo(this.getDepartment(departmentId), DepartmentDto.class);
+        return XJsonUtils.convertToDto(this.getDepartment(departmentId), DepartmentDto.class);
     }
 
     /**
@@ -61,7 +61,7 @@ public class DepartmentService {
      * @throws IOException
      */
     public DepartmentDto saveDepartment(Department department) throws IOException {
-        return XJsonUtils.convertToVo(departmentRepository.save(department), DepartmentDto.class);
+        return XJsonUtils.convertToDto(departmentRepository.save(department), DepartmentDto.class);
     }
 
     /**
@@ -70,7 +70,7 @@ public class DepartmentService {
      * @return
      */
     public DepartmentDto updateDepartment(Department department) throws IOException {
-        return XJsonUtils.convertToVo(departmentRepository.save(department), DepartmentDto.class);
+        return XJsonUtils.convertToDto(departmentRepository.save(department), DepartmentDto.class);
     }
 
 }

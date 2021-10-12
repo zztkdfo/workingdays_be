@@ -44,7 +44,7 @@ public class XJsonUtils {
      * @return
      * @throws IOException
      */
-    public static <T> T convertToVo (Object obj, Class<T> clazz) throws IOException {
+    public static <T> T convertToDto (Object obj, Class<T> clazz) throws IOException {
         String jsonString = objectToJsonString(obj);
         T data = jsonStringToObejct(jsonString, clazz);
         return data;

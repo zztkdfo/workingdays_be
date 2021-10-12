@@ -2,9 +2,7 @@ package com.ncits.workingdays.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ncits.workingdays.domain.Department;
-import com.ncits.workingdays.domain.Employee;
 import com.ncits.workingdays.domain.dto.DepartmentDto;
-import com.ncits.workingdays.domain.dto.EmployeeDto;
 import com.ncits.workingdays.service.DepartmentService;
 import com.ncits.workingdays.service.EmployeeService;
 import com.ncits.workingdays.utils.XObjectUtils;
@@ -58,22 +56,18 @@ public class DepartmentController {
             Department department = departmentService.getDepartment(departmentDto.getId());
             if(XObjectUtils.isNotEmpty(department)){
                 Department updateDepartment = Department.builder()
-                        .id(department.getId())
-                        .departmentCode(department.getDepartmentCode())
+                    .id(department.getId())
+                    .departmentCode(department.getDepartmentCode())
 
-                        // update 항목
-                        .departmentName(departmentDto.getDepartmentName())
-                        .departmentAdmin(employeeService.getEmployee(departmentDto.getDepartmentAdminId()))
-                        .upperDepartment(departmentService.getDepartment(departmentDto.getUpperDepartmentId()))
-
-                        .build();
+                    // update 항목
+                    .departmentName(departmentDto.getDepartmentName())
+                    .departmentAdmin(employeeService.getEmployee(departmentDto.getDepartmentAdminId()))
+                    .upperDepartment(departmentService.getDepartment(departmentDto.getUpperDepartmentId()))
+                    .build();
 
                 return departmentService.updateDepartment(updateDepartment);
             }
         }
         return null;
     }
-
-
-
 }

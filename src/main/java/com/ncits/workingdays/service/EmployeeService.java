@@ -34,7 +34,7 @@ public class EmployeeService {
      * @throws IOException
      */
     public EmployeeDto getEmployeeDto(Long employeeId) throws IOException {
-        return XJsonUtils.convertToVo(this.getEmployee(employeeId), EmployeeDto.class);
+        return XJsonUtils.convertToDto(this.getEmployee(employeeId), EmployeeDto.class);
     }
 
     /**
@@ -57,7 +57,7 @@ public class EmployeeService {
      * @throws IOException
      */
     public EmployeeDto saveEmployee(Employee employee) throws IOException {
-        return XJsonUtils.convertToVo(employeeRepository.save(employee), EmployeeDto.class);
+        return XJsonUtils.convertToDto(employeeRepository.save(employee), EmployeeDto.class);
     }
 
     /**
@@ -66,7 +66,7 @@ public class EmployeeService {
      * @return
      */
     public EmployeeDto updateEmployee(Employee employee) throws IOException {
-        return XJsonUtils.convertToVo(employeeRepository.save(employee), EmployeeDto.class);
+        return XJsonUtils.convertToDto(employeeRepository.save(employee), EmployeeDto.class);
     }
 
 }
