@@ -1,8 +1,11 @@
 package com.ncits.workingdays.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.ncits.workingdays.domain.DepartmentMappingEmployee;
 import com.ncits.workingdays.domain.Employee;
 import com.ncits.workingdays.domain.dto.EmployeeDto;
+import com.ncits.workingdays.service.DepartmentMappingEmployeeService;
+import com.ncits.workingdays.service.DepartmentService;
 import com.ncits.workingdays.service.EmployeeService;
 import com.ncits.workingdays.utils.*;
 import io.swagger.annotations.Api;
@@ -21,6 +24,10 @@ public class EmployeeController {
 
     @Resource
     private EmployeeService employeeService;
+    @Resource
+    private DepartmentMappingEmployeeService departmentMappingEmployeeService;
+    @Resource
+    private DepartmentService departmentService;
 
     @GetMapping
     @ApiOperation(value = "Employee 목록")
@@ -44,6 +51,7 @@ public class EmployeeController {
             .employeeNumber(employeeDto.getEmployeeNumber())
             .position(employeeDto.getPosition())
             .build();
+
         return employeeService.saveEmployee(employee);
     }
 

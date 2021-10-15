@@ -41,10 +41,10 @@ public class DepartmentController {
     @ApiOperation(value = "Department 추가")
     DepartmentDto saveDepartment(@RequestBody DepartmentDto departmentDto) throws IOException {
         Department department = Department.builder()
-            .departmentAdmin(employeeService.getEmployee(departmentDto.getDepartmentAdminId()))
+            .departmentAdmin(departmentDto.getDepartmentAdminId() != null ? employeeService.getEmployee(departmentDto.getDepartmentAdminId()): null)
             .departmentCode(departmentDto.getDepartmentCode())
             .departmentName(departmentDto.getDepartmentName())
-            .upperDepartment(departmentService.getDepartment(departmentDto.getUpperDepartmentId()))
+            .upperDepartment(departmentDto.getUpperDepartmentId() != null ? departmentService.getDepartment(departmentDto.getUpperDepartmentId()) : null)
             .build();
         return departmentService.saveDepartment(department);
     }
@@ -61,8 +61,8 @@ public class DepartmentController {
 
                     // update 항목
                     .departmentName(departmentDto.getDepartmentName())
-                    .departmentAdmin(employeeService.getEmployee(departmentDto.getDepartmentAdminId()))
-                    .upperDepartment(departmentService.getDepartment(departmentDto.getUpperDepartmentId()))
+                    .departmentAdmin(departmentDto.getDepartmentAdminId() != null ? employeeService.getEmployee(departmentDto.getDepartmentAdminId()): null)
+                    .upperDepartment(departmentDto.getUpperDepartmentId() != null ? departmentService.getDepartment(departmentDto.getUpperDepartmentId()) : null)
                     .build();
 
                 return departmentService.updateDepartment(updateDepartment);

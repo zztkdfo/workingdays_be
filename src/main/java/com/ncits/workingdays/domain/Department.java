@@ -34,7 +34,7 @@ public class Department extends AuditableEntity<Long> implements Serializable {
     /**
      * 부서명
      */
-    @Column(name = "DEPARTMENT_Name", nullable = false)
+    @Column(name = "DEPARTMENT_NAME", nullable = false)
     private String departmentName;
 
     /**
