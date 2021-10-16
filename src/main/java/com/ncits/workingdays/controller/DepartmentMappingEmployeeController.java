@@ -1,5 +1,6 @@
 package com.ncits.workingdays.controller;
 
+import com.ncits.workingdays.config.BooleanToStringConverter;
 import com.ncits.workingdays.domain.DepartmentMappingEmployee;
 import com.ncits.workingdays.domain.dto.DepartmentMappingEmployeeDto;
 import com.ncits.workingdays.service.DepartmentMappingEmployeeService;
@@ -8,13 +9,12 @@ import com.ncits.workingdays.service.EmployeeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/mappings")
@@ -39,6 +39,30 @@ public class DepartmentMappingEmployeeController {
                 .build();
 
         return departmentMappingEmployeeService.saveMapping(dme);
+    }
+
+    @PostMapping(value = "/dme")
+    @ApiOperation(value = "Employee Mapping User")
+    Boolean setDepartmentMappingEmployee(
+            @RequestParam Long employeeId,
+            @RequestParam Long departmentId,
+            @RequestParam String position,
+            @RequestParam Boolean isPrimary
+
+            ) throws IOException {
+
+    DepartmentMappingEmployee dme = DepartmentMappingEmployee.builder()
+        .department(departmentService.getDepartment(departmentId))
+        .employee(employeeService.getEmployee(employeeId))
+        .position(position)
+        .isPrimary(isPrimary)
+        .build();
+
+    departmentMappingEmployeeService.saveMapping(dme);
+
+
+
+        return true;
     }
 
 }

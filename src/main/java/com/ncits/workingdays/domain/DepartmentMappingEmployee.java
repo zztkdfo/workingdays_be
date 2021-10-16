@@ -53,12 +53,6 @@ public class DepartmentMappingEmployee extends AuditableEntity<Long> implements 
 
 
     /**
-     * 성명
-     */
-    @Column(name = "EMPLOYEE_NAME", nullable = false)
-    private String employeeName;
-
-    /**
      * 직급(팀원, 팀장, 실장 ... )
      */
     @Column(name = "POSITION", nullable = false)
