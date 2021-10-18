@@ -1,6 +1,5 @@
 package com.ncits.workingdays.controller;
 
-import com.ncits.workingdays.config.BooleanToStringConverter;
 import com.ncits.workingdays.domain.DepartmentMappingEmployee;
 import com.ncits.workingdays.domain.dto.DepartmentMappingEmployeeDto;
 import com.ncits.workingdays.service.DepartmentMappingEmployeeService;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/v1/mappings")
