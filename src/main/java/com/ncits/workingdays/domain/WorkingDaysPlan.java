@@ -77,7 +77,7 @@ public class WorkingDaysPlan extends AuditableEntity<Long> implements Serializab
      * 근무시간(하루)
      */
     @Column(name="WORKING_TIME", nullable = true)
-    private Integer workingTIme;
+    private Integer workingTime;
 
     /**
      * 근무 유형
